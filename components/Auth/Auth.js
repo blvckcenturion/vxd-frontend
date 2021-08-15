@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 const Auth = ({ onCloseModal, setTitleModal }) => {
     const [showLogin, setShowLogin] = useState(true);
     
+
     const showLoginForm = () => {
         setShowLogin(true)
         setTitleModal("Inicia Sesion");
@@ -14,7 +15,7 @@ const Auth = ({ onCloseModal, setTitleModal }) => {
         setTitleModal("Registrate");
     };
 
-    return showLogin ? <LoginForm showRegisterForm={showRegisterForm} /> : <RegisterForm showLoginForm={ showLoginForm }/>;
+    return showLogin ? <LoginForm showRegisterForm={showRegisterForm} onCloseModal={ onCloseModal } /> : <RegisterForm showLoginForm={ showLoginForm }/>;
 }
 
 export default Auth

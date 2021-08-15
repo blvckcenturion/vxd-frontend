@@ -6,12 +6,12 @@ const TopBar = () => {
         <div className="top-bar">
             <Container>
                 <Grid className="top-bar">
-                    <Grid.Column width={8} className="top-bar__left">
-                        <Logo/>
-                    </Grid.Column>
-                    <Grid.Column width={8} className="top-bar__right">
-                        <Search/>
-                    </Grid.Column>
+                <Grid.Column width={8} className="top-bar__left">
+                    <Logo />
+                </Grid.Column>
+                <Grid.Column width={8} className="top-bar__right">
+                    <Search />
+                </Grid.Column>
                 </Grid>
             </Container>
         </div>
@@ -20,7 +20,15 @@ const TopBar = () => {
 
 export default TopBar
 
-const Logo = () => (<Link href="/"><a><Image src="/logo.png" alt="Logo"/></a></Link>)
+const Logo = () => {
+    return (
+      <Link href="/">
+        <a>
+          <Image src="/logo.png" alt="Gaming" />
+        </a>
+      </Link>
+    );
+  }
 
 
 const Search = () => {
