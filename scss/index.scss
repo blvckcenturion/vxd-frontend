@@ -1,0 +1,15 @@
+//variables
+@import "./variables.scss";
+
+//Layouts
+@import "./layouts/BasicLayout.scss";
+
+//Components
+
+//Header
+@import "./components/Header/Header.scss";
+@import "./components/Header/TopBar.scss";
+@import "./components/Header/Menu.scss";
+
+//Modal
+@import "./components/Modal/BasicModal.scss";

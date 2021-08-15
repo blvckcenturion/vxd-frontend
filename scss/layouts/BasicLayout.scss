@@ -1,0 +1,12 @@
+.basic-layout{
+    min-height: 100vh;
+    background-color: $background-grey-light;
+    .content{
+        height: calc(100vh - 130px);
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+}
