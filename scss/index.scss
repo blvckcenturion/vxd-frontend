@@ -17,6 +17,12 @@
 //Auth
 @import "./components/Auth/LoginForm.scss";
 
+//Account
+@import "./components/Account/ChangeNameForm.scss";
+@import "./components/Account/ChangeEmailForm.scss";
+@import "./components/Account/ChangePasswordForm.scss";
+@import "./components/Account/AddressForm.scss";
+@import "./components/Account/ListAddress.scss";
 
 //Pages
 @import './pages/Account.scss';

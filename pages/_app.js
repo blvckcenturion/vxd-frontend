@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 function MyApp({ Component, pageProps }) {
 
   const [auth, setAuth] = useState(undefined)
-  const [reloadUser, setReloadUser] = useState(false)
+  const [reloadUser, setreloadUser] = useState(false)
   const router = useRouter();
 
   useEffect(() => {
@@ -40,7 +40,12 @@ function MyApp({ Component, pageProps }) {
       setAuth(null);
       router.push("/");
     }
-   }
+  }
+  
+  const setReloadUser = () => {
+    setreloadUser(!reloadUser);
+  }
+
 
   const authData = useMemo(() => ({
     auth,

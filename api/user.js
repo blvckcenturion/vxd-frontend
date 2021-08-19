@@ -1,6 +1,7 @@
 import { BASE_PATH } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
 
+
 export const registerApi = async (formData) => {
     try {
         const url = `${BASE_PATH}/auth/local/register`
@@ -52,8 +53,8 @@ export const resetPasswordApi = async (email) => {
       const response = await fetch(url, params);
       const result = await response.json();
       return result;
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log(e);
       return null;
     }
 }
@@ -64,6 +65,62 @@ export const getMeApi = async (logout) => {
         const result = await authFetch(url, null, logout);
         return result ? result : null;
     } catch (error) {
-        return null
+        console.log(e);
+        return null;
+    }
+}
+
+export const updateNameApi = async (idUser, data, logout) => {
+    try {
+        const url = `${BASE_PATH}/users/${idUser}`;
+        const params = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+        const result = await authFetch(url, params, logout);
+        return result ? result : null;
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+}
+
+export const updateEmailApi = async (idUser, email, logout) => {
+    try {
+      const url = `${BASE_PATH}/users/${idUser}`;
+      const params = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      };
+      const result = await authFetch(url, params, logout);
+      return result ? result : null;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+}
+  
+export const updatePasswordApi = async (idUser, password, logout) => {
+    try {
+        console.log(idUser)
+        const url = `${BASE_PATH}/users/${idUser}`;
+        const params = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        };
+        const result = await authFetch(url, params, logout);
+        return result ? result : null;
+      } catch (e) {
+        console.log(e);
+        return null;
     }
 }

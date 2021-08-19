@@ -16,7 +16,6 @@ const UserMenu = () => {
     useEffect(() => {
         (async () => {
             const user = await getMeApi(logout);
-            console.log(user);
             setUser(user);
         })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
