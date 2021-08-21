@@ -4,8 +4,11 @@
 //Layouts
 @import "./layouts/BasicLayout.scss";
 
-//Components
+//Pages
+@import './pages/Account.scss';
+@import './pages/Index.scss';
 
+// Components
 //Header
 @import "./components/Header/Header.scss";
 @import "./components/Header/TopBar.scss";
@@ -24,5 +27,5 @@
 @import "./components/Account/AddressForm.scss";
 @import "./components/Account/ListAddress.scss";
 
-//Pages
-@import './pages/Account.scss';
+//ProductList
+@import "./components/ProductList/ProductList.scss";

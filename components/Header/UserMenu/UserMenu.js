@@ -5,10 +5,12 @@ import BasicModal from "../../Modal/BasicModal";
 import Auth from '../../Auth'
 import useAuth from '../../../hooks/useAuth';
 import { getMeApi } from '../../../api/user';
+import { getCategoriesApi } from '../../../api/platform';
+import { map } from 'lodash';
 
 const UserMenu = () => {
+    const [platforms, setplatforms] = useState([]);
     const [showModal, setShowModal] = useState(false);
-
     const [titleModal, setTitleModal] = useState("Inicia sesion");
     const [user, setUser] = useState(undefined)
     const { logout, auth } = useAuth();
@@ -21,6 +23,14 @@ const UserMenu = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auth])
 
+    useEffect(() => {
+        (async () => {
+            const response = await getCategoriesApi(logout);
+            setplatforms(response || []);
+        })()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const onShowModal = () => setShowModal(true);
     const onCloseModal = () => setShowModal(false);
 
@@ -29,7 +39,8 @@ const UserMenu = () => {
             <Container>
                 <Grid>
                     <Grid.Column className="menu__left" width={6}>
-                        <MenuPlatforms />
+                        <MenuPlatforms platforms={platforms} />
+                        
                     </Grid.Column>
                     <Grid.Column className="menu__right" width={10}>
                         {user !== undefined && <MenuOptions onShowModal={onShowModal} user={user} logout={ logout }/> }
@@ -45,15 +56,15 @@ const UserMenu = () => {
 
 export default UserMenu
 
-const MenuPlatforms = () => {
+const MenuPlatforms = ({ platforms }) => {
+
     return (
         <Menu>
-            <Link href="/play-station" passHref>
-                <Menu.Item as="a">Categoria 1</Menu.Item>
-            </Link>
-            <Link href="/play-station" passHref>
-                <Menu.Item as="a">Categoria 2</Menu.Item>
-            </Link>
+            {map(platforms, (platform) => (
+                <Link href={`/categories/${platform.url}`} key={platform._id} passHref>
+                    <Menu.Item as="a" name={platform.url}>{ platform.title}</Menu.Item>
+                </Link>
+            ))}
         </Menu>
     );
 }

@@ -3,7 +3,7 @@ import { Form, Button} from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
 import useAuth from '../../../hooks/useAuth';
-import { createAddressApi } from '../../../api/address'
+import { createAddressApi, updateAddressApi } from '../../../api/address'
 import { toast } from 'react-toastify';
 
 const AddressForm = ({ setShowModal, setReloadAddresses, newAddress, address }) => {
@@ -12,26 +12,42 @@ const AddressForm = ({ setShowModal, setReloadAddresses, newAddress, address }) 
     const { auth, logout } = useAuth();
     
     const formik = useFormik({
-        initialValues: initialValues(),
+        initialValues: initialValues(address),
         validationSchema: Yup.object(validationSchema()),
-        onSubmit: async (formData) => {
-            createAddress({ ...formData, user: auth.idUser });
+        onSubmit: (formData) => {
+            const formDataTemp = {...formData, user: auth.idUser}
+            newAddress ? createAddress(formDataTemp) : updateAddress(formDataTemp);
         }
     });
 
     const createAddress = async (formData) => {
         setLoading(true);
-            const response = await createAddressApi(formData, logout);
+        const response = await createAddressApi(formData, logout);
+        if (!response) {
+            toast.warning("Error al crear la direccion");
+        } else {
+            formik.resetForm();
+            toast.success("Direccion creada correctamente");
+            setReloadAddresses();
+            setShowModal(false);
+        }
+        setLoading(false);
+    }
+    
+    const updateAddress = async (formData) => {
+        setLoading(true);
+            const response = await updateAddressApi(address._id, formData, logout);
             if (!response) {
-                toast.warning("Error al crear la direccion");
+                toast.warning("Error al actualizar la direccion");
             } else {
                 formik.resetForm();
-                toast.success("Direccion creada correctamente");
+                toast.success("Direccion actualizada correctamente");
                 setReloadAddresses();
+                setLoading(false);
                 setShowModal(false);
             }
-            setLoading(false);
-     }
+        
+    }
 
     return (
         <Form onSubmit={ formik.handleSubmit}>
@@ -93,7 +109,7 @@ const AddressForm = ({ setShowModal, setReloadAddresses, newAddress, address }) 
             error={formik.errors.phone}
             />
             <div className="actions">
-                <Button className="submit" type="submit" loading={ loading }>Crear direccion</Button>
+                <Button className="submit" type="submit" loading={loading}>{ newAddress ? "Crear direccion" : "Actualizar direccion"}</Button>
             </div>
         </Form>
     )
@@ -102,13 +118,13 @@ const AddressForm = ({ setShowModal, setReloadAddresses, newAddress, address }) 
 export default AddressForm
 
 
-const initialValues = () => ({
-    title: "",
-    name: "",
-    address: "",
-    city: "",
-    state: "",
-    phone: ""
+const initialValues = (address) => ({
+    title: address?.title || "",
+    name: address?.name || "",
+    address: address?.address || "",
+    city: address?.city || "",
+    state: address?.state || "",
+    phone: address?.phone || ""
 })
 
 const validationSchema = () => ({
