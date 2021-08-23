@@ -7,6 +7,7 @@
 //Pages
 @import './pages/Account.scss';
 @import './pages/Index.scss';
+@import './pages/Category.scss';
 
 // Components
 //Header
@@ -29,3 +30,10 @@
 
 //ProductList
 @import "./components/ProductList/ProductList.scss";
+
+//Pagination
+@import "./components/Pagination.scss";
+
+//Product
+@import "./components/Product/ProductHeader.scss";
+@import "./components/Product/ProductTabs.scss";

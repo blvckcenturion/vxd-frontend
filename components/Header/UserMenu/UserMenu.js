@@ -5,7 +5,7 @@ import BasicModal from "../../Modal/BasicModal";
 import Auth from '../../Auth'
 import useAuth from '../../../hooks/useAuth';
 import { getMeApi } from '../../../api/user';
-import { getCategoriesApi } from '../../../api/platform';
+import { getCategoriesApi } from '../../../api/category';
 import { map } from 'lodash';
 
 const UserMenu = () => {

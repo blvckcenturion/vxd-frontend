@@ -1,3 +1,49 @@
 .product-list{
 
+    &__product{
+        padding: 15px;
+        
+        &:hover{
+            opacity: 0.9;
+        }
+        img{
+            width:100%;
+            height: 200px;
+            object-fit:contain;
+            padding-bottom: 10px;
+        }
+
+        h2{
+            text-align: center;
+            margin-top: 5px;
+            font-size: 15px;
+            color: $font-dark;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding: 0 10px;
+        }
+
+        &-image{
+            position: relative;
+            
+            div{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: $primary;
+                align-items: center;
+                height: 50px;
+            }
+            .discount{
+                background-color: $font-dark;
+                color: $font-light;
+                font-size: 12px;
+            }
+            .price{
+                
+            }
+        }
+    }
 }
