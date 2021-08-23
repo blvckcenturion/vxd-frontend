@@ -1,12 +1,13 @@
 import { Tab, Pane } from 'semantic-ui-react';
-import ProductInfo from '../ProductInfo/ProductInfo';
+import ProductGallery from '../ProductGallery/ProductGallery';
+
 const ProductTabs = ({ product }) => {
     const panes = [
         
         {
-            menuItem: 'Informacion',
+            menuItem: 'Galeria',
             // eslint-disable-next-line react/display-name
-            render: () => (<Tab.Pane><ProductInfo product={ product }/></Tab.Pane>),
+            render: () => (<Tab.Pane><ProductGallery product={ product }/></Tab.Pane>),
         }
       ];
     

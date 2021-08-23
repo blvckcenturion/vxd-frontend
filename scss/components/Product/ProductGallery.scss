@@ -1,0 +1,15 @@
+.product-gallery{
+
+    img {
+        width: 100% !important;
+        cursor: pointer;
+    }
+}
+.image-modal{
+    width: 40% !important;
+    display: flex;
+    align-items: center;
+    .modal-image{
+        width: 100%;
+    }
+}

@@ -1,12 +1,14 @@
 import { useMemo, useState, useEffect } from 'react';
 import '../scss/global.scss';
-import "semantic-ui-css/semantic.min.css";
+import 'semantic-ui-css/semantic.min.css';
 import { ToastContainer} from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-import AuthContext from "../context/AuthContext";
+import 'react-toastify/dist/ReactToastify.css';
+import AuthContext from '../context/AuthContext';
 import jwtDecode from 'jwt-decode';
 import { setToken, getToken, removeToken } from '../api/token';
 import { useRouter } from 'next/router'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 function MyApp({ Component, pageProps }) {
 
