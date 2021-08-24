@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import { Container, Grid, Image, Input } from 'semantic-ui-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const TopBar = () => {
     return (
@@ -32,7 +34,21 @@ const Logo = () => {
 
 
 const Search = () => {
+    const [searchStr, setSearchStr] = useState("");
+    const [load, setLoad] = useState(false);
+    const router = useRouter();
+
+
+    useEffect(() => {
+        if (load) {
+            router.push(`/search?query=${searchStr}`);
+        }
+        setLoad(true);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchStr])
+
     return (
-        <Input id="search-item" icon={{name:"search"}}/>
+        <Input id="search-item" icon={{ name: "search" }} value={router.query.query} onChange={ (_, data) => setSearchStr(data.value) }/>
+        
     )
 }

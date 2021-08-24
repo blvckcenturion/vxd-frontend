@@ -47,7 +47,7 @@ const Product = ({ product }) => {
                     <div className="product-list__product-image">
                         <Image src={productimage.url} alt={title}/>
                         <div className="product-list__product-info">
-                            {!discount && <span className="discount">-100%</span>}
+                            {discount && <span className="discount">-${ discount }%</span>}
                             <span className="price">{ price }$</span>
                         </div>
                     </div>

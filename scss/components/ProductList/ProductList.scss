@@ -31,7 +31,7 @@
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: space-evenly;
                 color: $primary;
                 align-items: center;
                 height: 50px;
@@ -41,9 +41,7 @@
                 color: $font-light;
                 font-size: 12px;
             }
-            .price{
-                
-            }
+
         }
     }
 }

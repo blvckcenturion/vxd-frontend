@@ -4,6 +4,7 @@ import Link from "next/link";
 import BasicModal from "../../Modal/BasicModal";
 import Auth from '../../Auth'
 import useAuth from '../../../hooks/useAuth';
+import useCart from '../../../hooks/useCart';
 import { getMeApi } from '../../../api/user';
 import { getCategoriesApi } from '../../../api/category';
 import { map } from 'lodash';
@@ -14,6 +15,7 @@ const UserMenu = () => {
     const [titleModal, setTitleModal] = useState("Inicia sesion");
     const [user, setUser] = useState(undefined)
     const { logout, auth } = useAuth();
+
 
     useEffect(() => {
         (async () => {
@@ -70,7 +72,7 @@ const MenuPlatforms = ({ platforms }) => {
 }
 
 const MenuOptions = ({ onShowModal, user, logout }) => {
-    
+    const { productsCart } = useCart();
     return (
         <Menu>
             {user ? (
@@ -85,7 +87,12 @@ const MenuOptions = ({ onShowModal, user, logout }) => {
                         <Menu.Item as="a"><Icon name="user outline" />{ user.name } { user.lastname }</Menu.Item>
                     </Link>
                     <Link href="/cart" passHref>
-                        <Menu.Item as="a" className="m-0"><Icon name="cart" /></Menu.Item>
+                        <Menu.Item as="a" className="m-0">
+                            <Icon name="cart" />
+                            <Label color="red" floating circular>
+                                { productsCart }
+                            </Label>
+                        </Menu.Item>
                     </Link>
                     <Menu.Item onClick={logout}>
                         <Icon name="power off" />Cerrar Sesion
