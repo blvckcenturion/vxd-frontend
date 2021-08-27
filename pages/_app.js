@@ -7,16 +7,15 @@ import AuthContext from '../context/AuthContext';
 import jwtDecode from 'jwt-decode';
 import { setToken, getToken, removeToken } from '../api/token';
 import { useRouter } from 'next/router';
-import { getProductsCart, addProductsCart, countProductsCart} from '../api/cart';
+import { getProductsCart, addProductsCart, countProductsCart, removeProductsCart} from '../api/cart';
 import CartContext from '../context/CartContext';
 
 function MyApp({ Component, pageProps }) {
 
-  
   const [reloadUser, setreloadUser] = useState(false)
   const [auth, setAuth] = useState(undefined)
   const [totalProductsCart, setTotalProductsCart] = useState(0);
-  const [reloadCart, setrReloadCart] = useState(false);
+  const [reloadCart, setReloadCart] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,7 +33,7 @@ function MyApp({ Component, pageProps }) {
   
   useEffect(() => {
     setTotalProductsCart(countProductsCart());
-    setrReloadCart(false);
+    setReloadCart(false);
   }, [reloadCart, auth])
 
   const login = (token) => {
@@ -57,17 +56,8 @@ function MyApp({ Component, pageProps }) {
     setreloadUser(!reloadUser);
   }
 
-  const addProduct = (product) => {
-    const token = getToken();
-    if (token) {
-      addProductsCart(product);
-      setrReloadCart(true);
-    } else {
-      toast.warning("Para comprar un juego tienes que iniciar sesión");
-    }
-  };
-
-
+  
+  
   const authData = useMemo(
     () => ({
       auth,
@@ -77,13 +67,29 @@ function MyApp({ Component, pageProps }) {
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [auth]
-  );
+    );
+    
+  const addProduct = (product) => {
+    const token = getToken();
+    if (token) {
+      addProductsCart(product);
+      setReloadCart(true);
+    } else {
+      toast.warning("Para comprar un juego tienes que iniciar sesión");
+    }
+  };
+
+  const removeProduct = (product) => {
+    removeProductsCart(product);
+    setReloadCart(true);
+  }
+
   
   const cartData = useMemo(() => ({
     productsCart: totalProductsCart,
     addProductCart: (product) => addProduct(product),
     getProductsCart: getProductsCart,
-    removeProductCart: () => null,
+    removeProductCart: (product) => removeProduct(product),
     removeAllProductsCart: () => null
   }), [totalProductsCart]);
 

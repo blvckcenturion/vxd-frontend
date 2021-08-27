@@ -10,7 +10,7 @@
 @import './pages/Category.scss';
 @import './pages/Wishlist.scss';
 @import './pages/Search.scss';
-
+@import './pages/Cart.scss';
 
 // Components
 //Header
@@ -41,3 +41,7 @@
 @import "./components/Product/ProductHeader.scss";
 @import "./components/Product/ProductTabs.scss";
 @import "./components/Product/ProductGallery.scss";
+
+//Cart
+@import "./components/Cart/SummaryCart.scss";
+@import "./components/Cart/AddressShipping.scss";
