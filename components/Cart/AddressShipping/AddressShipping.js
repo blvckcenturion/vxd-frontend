@@ -64,8 +64,6 @@ function Address({ address, addressActive, setAddressActive, setAddress }) {
         }
     
   };
-
-    console.log(address)
   return (
     <div
       className={classNames("address", {

@@ -4,7 +4,6 @@ import { forEach, map, remove } from "lodash";
 import  useCart  from '../../../hooks/useCart';
 
 const SummaryCart = ({ products }) => {
-    console.log(products);
     const [totalPrice, setTotalPrice] = useState(0);
     const { removeProductCart } = useCart();
 
@@ -22,7 +21,6 @@ const SummaryCart = ({ products }) => {
 
     const removeProduct = (product) => {
         removeProductCart(product);
-        console.log(product);
     }
 
 

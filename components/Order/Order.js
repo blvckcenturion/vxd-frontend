@@ -9,7 +9,7 @@ import { map } from 'lodash';
 
 const Order = ({ order, index }) => {
     const [showModal, setShowModal] = useState(false);
-    console.log(order);
+
     const { products, totalPayment, createdAt, address } = order;
     return (
         <>
@@ -49,7 +49,6 @@ const Order = ({ order, index }) => {
 }
 
 const ProductsModal = ({ showModal, setShowModal, products }) => {
-    console.log(products);
     return (
         <BasicModal
             show={showModal}

@@ -13,7 +13,7 @@ const Orders = () => {
     useEffect(() => {
         (async () => {
             const response = await getOrdersApi(auth.idUser, logout);
-            console.log(response);
+
             setOrders(response || []);
         })()
         // eslint-disable-next-line

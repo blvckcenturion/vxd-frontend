@@ -39,6 +39,7 @@ const ProductList = ({ products }) => {
 export default ProductList
 
 const Product = ({ product }) => {
+
     const { title, url, productimage, discount, price } = product;
     return (
         <Grid.Column className="product-list__product">

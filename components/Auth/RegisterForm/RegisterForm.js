@@ -14,7 +14,6 @@ const RegisterForm = ({ showLoginForm }) => {
         onSubmit: async (formData) => {
             setLoading(true);
             const response = await registerApi(formData);
-            console.log(response);
             if (response?.jwt) {
                 toast.success("Registro de usuario exitoso.")
                 showLoginForm();

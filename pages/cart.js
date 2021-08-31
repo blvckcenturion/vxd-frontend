@@ -35,7 +35,6 @@ const EmptyCart = () => {
 const FullCart = ({ products }) => {
     const [productsData, setProductsData] = useState(null);
     const [address, setAddress] = useState(null);
-    console.log("pvto", productsData);
     useEffect(() => {
         (async () => {
             const productsTemp = [];
