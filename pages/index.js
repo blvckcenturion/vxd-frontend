@@ -4,6 +4,7 @@ import { getLatestProductsApi } from '../api/product';
 import { size } from 'lodash';
 import { Loader } from 'semantic-ui-react'
 import ProductList from '../components/ProductList';
+import Seo from '../components/Seo';
 
 export default function Home() {
   const [products, setProducts] = useState(null);
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <BasicLayout className="home">
+      <Seo/>
       {!products && <Loader active>Cargando</Loader>}
       {products && size(products) === 0 && (<div> <h3>No hay productos disponibles.</h3></div>)}
       {size(products) > 0 && <ProductList products={ products }/>}

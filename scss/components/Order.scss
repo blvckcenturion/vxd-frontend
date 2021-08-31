@@ -1,7 +1,7 @@
 .order {
     display: flex;
     justify-content: space-between;
-
+    
     height: 100px;
     margin-bottom: 10px;
     background-color: $background-light;
@@ -39,21 +39,25 @@
           }
         h3{
             margin:0;
-            
         }
       }
+              
+      &-date {
+        margin: 0;
+        width: 140px;
+
+        h4, p{
+            margin: 0 !important;
+        }
+      }
+      
     }
   
     &__other {
       display: flex;
       align-items: center;
       padding-right: 10px;
-  
-      &-date {
-        margin: 0 20px 0 0;
-        width: 125px;
-      }
-  
+
       i {
         padding-left: 20px;
         color: $primary;

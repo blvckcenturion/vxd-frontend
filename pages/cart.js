@@ -5,12 +5,13 @@ import useCart from '../hooks/useCart';
 import SummaryCart from '../components/Cart/SummaryCart';
 import AddressShipping from '../components/Cart/AddressShipping';
 import PlaceOrder from '../components/Cart/PlaceOrder';
-
+import Seo from '../components/Seo';
 const Cart = () => {
     const { getProductsCart } = useCart();
     const products = getProductsCart();
     return (
         <BasicLayout className="cart">
+            <Seo title={ "Carrito de Compras"}/>
             <h2>Carrito de compras</h2>
             {!products
                 ? <EmptyCart/>

@@ -10,7 +10,7 @@ import { map } from 'lodash';
 const Order = ({ order, index }) => {
     const [showModal, setShowModal] = useState(false);
     console.log(order);
-    const { products, totalPayment, createdAt, addressShipping } = order;
+    const { products, totalPayment, createdAt, address } = order;
     return (
         <>
         <div className="order">
@@ -21,9 +21,16 @@ const Order = ({ order, index }) => {
                     <h3>Monto Total: { totalPayment }</h3>
                 </div>
                 <div className="order__info-date">
+                    
                     <h4>
                         {moment(createdAt).format("L")} - {moment(createdAt).format("LT")}
                     </h4>
+                    <p>
+                        {address.city}, {address.address}
+                    </p>
+                    <p>
+                        {address.phone}
+                    </p>
                 </div>
                 <div className="order__other" onClick={() => setShowModal(true)}>
                     <Button type="button">

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { size } from 'lodash-es';
 import ProductList from '../components/ProductList';
 import { Loader } from 'semantic-ui-react';
+import Seo from '../components/Seo';
 
 const Search = () => {
     const [products, setProducts] = useState(null);
@@ -29,6 +30,7 @@ const Search = () => {
 
     return (
         <BasicLayout className="search">
+            <Seo title={`Buscando: ${query.query}`} />
                 {!products && <Loader active>Cargando productos</Loader>}
                 {(products && size(products) === 0) && (<div className="data__not-found"><h3>No se encontraron productos.</h3></div>)}
                 {size(products) > 0 && <ProductList products={products} />}

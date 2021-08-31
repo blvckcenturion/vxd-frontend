@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 import BasicLayout from "../layouts/BasicLayout";
 import { Loader } from 'semantic-ui-react';
 import ProductList from '../components/ProductList/ProductList';
+import Seo from '../components/Seo';
 
 const Wishlist = () => {
 
@@ -24,11 +25,10 @@ const Wishlist = () => {
         })()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auth])
-
     
-
     return (
         <BasicLayout className="wishlist">
+            <Seo title={ "Mi lista de deseos"}/>
             <div className="wishlist__block">
                 <div className="title">Lista de deseos</div>
                 <div className="data">
