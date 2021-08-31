@@ -26,7 +26,7 @@ const Logo = () => {
     return (
       <Link href="/">
         <a>
-          <Image src="/logo.png" alt="Gaming" />
+          <Image src="/vxd.svg" alt="vxd" />
         </a>
       </Link>
     );
