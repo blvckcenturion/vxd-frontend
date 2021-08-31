@@ -7,7 +7,7 @@ import AuthContext from '../context/AuthContext';
 import jwtDecode from 'jwt-decode';
 import { setToken, getToken, removeToken } from '../api/token';
 import { useRouter } from 'next/router';
-import { getProductsCart, addProductsCart, countProductsCart, removeProductsCart} from '../api/cart';
+import { getProductsCart, addProductsCart, countProductsCart, removeProductsCart, removeAllProductsCart} from '../api/cart';
 import CartContext from '../context/CartContext';
 
 function MyApp({ Component, pageProps }) {
@@ -90,7 +90,7 @@ function MyApp({ Component, pageProps }) {
     addProductCart: (product) => addProduct(product),
     getProductsCart: getProductsCart,
     removeProductCart: (product) => removeProduct(product),
-    removeAllProductsCart: () => null
+    removeAllProductsCart: () => removeAllProductsCart()
   }), [totalProductsCart]);
 
   if (auth === undefined) return null;

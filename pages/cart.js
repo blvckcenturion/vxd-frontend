@@ -4,6 +4,7 @@ import { getProductByUrlApi } from '../api/product';
 import useCart from '../hooks/useCart';
 import SummaryCart from '../components/Cart/SummaryCart';
 import AddressShipping from '../components/Cart/AddressShipping';
+import PlaceOrder from '../components/Cart/PlaceOrder';
 
 const Cart = () => {
     const { getProductsCart } = useCart();
@@ -49,7 +50,8 @@ const FullCart = ({ products }) => {
     return (
         <div className="cart">
             <SummaryCart products={productsData} />
-            <AddressShipping setAddress={ setAddress }/>
+            <AddressShipping setAddress={setAddress} />
+            {address && <PlaceOrder address={address} products={productsData} />}
         </div>
     )
 }

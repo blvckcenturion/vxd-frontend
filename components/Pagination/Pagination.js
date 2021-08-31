@@ -12,7 +12,6 @@ const Pagination = ({ totalProducts, page, limitPerPage}) => {
       const url = queryString.stringifyUrl(urlParse);
       router.push(url);
     };
-  
 
   
     return (
